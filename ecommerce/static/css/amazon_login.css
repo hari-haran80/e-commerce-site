@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    color: aliceblue;
+}
+.main{
+    display: flex;
+    border-bottom: 1px solid rgb(181, 181, 181);
+}
+.main_container{
+    width: 320px;
+    padding: 5px;
+    margin: auto;
+    margin-top: 25vh;
+}
+.signin{
+    padding: 20px;
+    box-shadow: 0px 0px 1px 0px aliceblue;
+    width: 100%;
+    border-radius: 5px;
+}
+.email{
+    margin-top: 20px;
+    width: 100%;
+    font-size: 15px;
+}
+.email input{
+    padding: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 4.5vh;
+}
+.input_div{
+    width: 100%;
+    margin-top: 20px;
+}
+.input_div input{
+    width: 100%;
+    border: 1px solid aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+.input_div .forgot{
+    position: absolute;
+    margin-left: 165px;
+    text-decoration: none;
+    color: blue;            
+}
+.button{
+    margin-top: 10px;
+}
+.sub_button{
+    width: 100%;
+    border: 1px solid yellow;
+    background-color: rgb(255, 242, 0);
+    border-radius: 10px;
+    padding: 7px 0;
+}
+.sub_button:hover{
+    background-color: orange;
+}
+.final{
+    width: 100%;
+    margin-top: 25px;
+}
+.final p{
+    position: relative;
+    text-align: center;
+}
+.final p:before {
+    content: "";
+    display: inline;
+    width: 32%;
+    height: 1px;
+    background:aliceblue;
+    left: 0;
+    top: 50%;
+    position: absolute;
+}
+.final p:after {
+    content: "";
+    display: block;
+    width: 32%;
+    height: 1px;
+    background: aliceblue;
+    right: 0;
+    top: 50%;
+    position: absolute;
+}
+.btn{
+  width: 100%;
+}
+.btn button{
+  width: 100%;
+  margin-top: 15px;
+  padding: 4px 20px;
+  box-shadow: 0px 0px 2px 0px black;
+  background-color: rgb(255, 255, 255);
+  border: none;
+}
+.Create_button:hover{
+    background-color: aliceblue;
+}
+.btn button a{
+  text-decoration: none;
+  color: black;
+}
+.footer{
+  width: 300px;
+  margin: auto;
+  margin-top: 15px;
+}
+.footer_main{
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_main a{
+    color: blue;
+    text-decoration: none;
+}
+.footer_sub{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}

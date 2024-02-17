@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/amazon_login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="main">
+        <div class="main_container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="signin">
+                    <h2>Sign in</h2>
+                    <div class="email">
+                        <label for="">Email:</label><br>
+                        <input type="email">
+                    </div>
+                    <div class="input_div">
+                        <a href="" class="forgot">Forgot Password</a>
+                        <label for="password">Password : </label><br>
+                        <input type="password" name="password"><br>
+                    </div>
+                    <div class="button">
+                        <input type="submit" class="sub_button" value="Sign In">
+                    </div> 
+                </div>
+            </form>
+            <div class="final">
+                <p>New to ecom?</p>
+            </div>
+            <div class="btn">
+                <button class="Create_button"><a href="create_account">Create Your Ecom account</a></button>
+            </div><br><br>
+        </div><br>
+    </div>
+    <footer class="footer">
+        <div class="footer_main">
+            <a href="">Conditions of Use</a>
+            <a href="">Privacy Notice</a>
+            <a href="">Help</a>
+        </div>
+        <div class="footer_sub">
+            <p>&copy; For Educational purpose only</p>
+        </div>
+    </footer>
+</body>
+</html>
