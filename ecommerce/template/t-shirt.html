@@ -16,7 +16,9 @@
         <div class="main_container_t-shirt">
             <div class="sub_t-shirt_container">
                 <div class="add_product_div">
+                    {% if user.is_superuser %}
                     <button class="addButton"><a href="AddT_shirt" class="addLink">Add T-shirt</a></button>
+                    {% endif %}
                 </div>
                 {% for x in shirt %}
                 <div class="product_div">

@@ -21,7 +21,7 @@
                 <ul class="main_ul">
                     <li><a href="home" class="nav_link"><i class="fa-solid fa-house"></i> Home</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="logout" class="nav_link"><i class="fa-solid fa-right-from-bracket"></i> logout</a></li>
+                        <li><a href="logout_user" class="nav_link"><i class="fa-solid fa-right-from-bracket"></i> logout</a></li>
                     {% else %} 
                         <li><a href="login" class="nav_link"><i class="fa-solid fa-right-to-bracket"></i> login</a></li>
                     {% endif %}

@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
-from django.contrib.auth import login as signin_acc, logout, authenticate
-
+from django.contrib.auth import login as signin_acc, logout, authenticate, get_user_model
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render (request, 'index.html')
@@ -14,6 +15,8 @@ def profile(request):
 def cart(request):
     return render (request, 'cart.html')
 
+# **************** Create Login and Logout Section ***********************
+
 def login(request):
     if request.method == "POST":
         username = request.POST ['username']
@@ -23,6 +26,9 @@ def login(request):
         if user is not None:
             signin_acc(request, user)
             return redirect('home')
+        
+        else:
+            messages.error(request, 'enter correct username and password')
         
     return render (request, 'login_amazon.html')
 
@@ -45,13 +51,42 @@ def create_account(request):
             data.set_password(password1)
             
             return redirect('login')
+            
+        else:
+            messages.error(request, 'Password MisMatched')
+            return render (request, 'create.html')
+            
+            
     return render (request, 'create.html')
 
 
 def logout_user(request):
     logout(request)
     
-    return render(request, 'login' )
+    return redirect('login' )
+
+
+def Reset(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        try:
+            user = get_user_model().objects.get(username = username)
+        
+        except:
+            messages.error(request, 'User Not Found!') 
+            return render (request, 'reset.html')
+            
+        user.set_password(password)
+        user.save()
+        
+        messages.success(request, f"{username}'s Password has been reset")
+        return redirect('login')
+    
+    return render(request, 'reset.html')
+
+# ********************* View Product Section **********************
 
 def headphones(request):
     ear = Head_phone.objects.all()
@@ -69,6 +104,7 @@ def t_shirt(request):
     shirt = T_shirt.objects.all()
     return render (request, 't-shirt.html',{'shirt': shirt})
 
+# ****************** Add Products section *******************
 
 def AddLaptop(request):
     
