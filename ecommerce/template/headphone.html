@@ -15,17 +15,21 @@
     <form action=""  method="post">
         <div class="main_container_t-shirt">
             <div class="sub_t-shirt_container">
+                <div class="add_product_div">
+                    <button class="addButton"><a href="Head_phone" class="addLink">Add Head Phones</a></button>
+                </div>
+                {% for x in ear %}
                 <div class="product_div">
                     <div class="img_div_product">
-                        <img src="../static/images/acer.jpg" alt="" class="image_product">
+                        <img src="{{x.Images.url}}" alt="" class="image_product">
                     </div>
                     <div class="detail_product">
-                        <h3>acer</h3>
-                        <h3>model 206</h3>
+                        <h3>{{x.HeadphoneName}}</h3>
+                        <h3>{{x.Model}}</h3>
                     </div>
                     <div class="product_name">
-                        <h3>Laptop</h3>
-                        <h3>50,000 rs</h3>
+                        <h3>Ear Phones</h3>
+                        <h3>{{x.Price}}rs</h3>
                     </div>
                     <div class="input_div">
                         <input type="number" placeholder="1" name="quantity" class="quantity">
@@ -33,6 +37,7 @@
                         <input type="button" value="Buy Now" class="add_cart">
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </form>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/add.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add T-shirt</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="AddProducts_div">
+        <div class="sub_productContainer">
+            <form action="" method="POST" class="Main_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Add T-shirt</h2>
+                <div class="laptop_name"><hr><br>
+                    <label for="" class="Labels">T-shirt Name:</label><br>
+                    <input type="text" name="t_shirt" id="" placeholder="Enter t-shirt Name" class="Inputs">
+                </div>
+                <div class="Model_product"><br>
+                    <label for="" class="Labels">Color:</label><br>
+                    <input type="text" name="Color" placeholder="Enter color" class="Inputs">
+                </div>
+                <div class="Price_div"><br>
+                    <label for="" class="Labels">Price:</label><br>
+                    <input type="number" name="Price" id="" placeholder="Enter Price" class="Inputs">
+                </div>
+                <div class="ProductImag"><br>
+                    <label for="" class="Labels">Upload image:</label><br>
+                    <input type="file" name="Images" id="" class="Inputs">
+                </div>
+                <div class="Submit_div"><br>
+                    <input type="submit" class="Submits" value="SUBMIT">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
