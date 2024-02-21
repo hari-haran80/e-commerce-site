@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
+from django.contrib.auth.models import User
+from django.contrib.auth import login as signin_acc, logout, authenticate
 
 
 def home(request):
@@ -13,10 +15,43 @@ def cart(request):
     return render (request, 'cart.html')
 
 def login(request):
+    if request.method == "POST":
+        username = request.POST ['username']
+        password = request.POST ['password']
+        user = authenticate(request, username = username, password = password)
+        
+        if user is not None:
+            signin_acc(request, user)
+            return redirect('home')
+        
     return render (request, 'login_amazon.html')
 
 def create_account(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        
+        if password1 == password2:
+            data = User.objects.create_user(
+                username = username,
+                email = email,
+                password = password1,
+            )
+            
+            data.is_staff = True
+            data.save()
+            data.set_password(password1)
+            
+            return redirect('login')
     return render (request, 'create.html')
+
+
+def logout_user(request):
+    logout(request)
+    
+    return render(request, 'login' )
 
 def headphones(request):
     ear = Head_phone.objects.all()

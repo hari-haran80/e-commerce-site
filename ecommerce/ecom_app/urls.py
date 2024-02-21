@@ -7,6 +7,7 @@ urlpatterns = [
     path ('profile' ,views.profile, name = 'profile'),
     path('cart', views.cart, name = 'cart'),
     path('login', views.login, name = 'login'),
+    path('logout_user', views.logout_user, name = 'logout'),
     path('create_account', views.create_account, name = 'create_account'),
     path('headphones', views.headphones, name = 'headphones'),
     path('mobile', views.mobile, name = 'mobile'),
