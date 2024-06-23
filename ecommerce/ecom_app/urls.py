@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns = [
 
-    path ('' ,views.home, name = 'home'),
-    path ('home' ,views.home, name = 'home'),
-    path ('profile' ,views.profile, name = 'profile'),
+    path('' ,views.home, name = 'home'),
+    path('home' ,views.home, name = 'home'),
     path('cart', views.cart, name = 'cart'),
+    path('payment', views.payment, name = 'payment'),
 
 # ****************** Login, Logout and Create User ***************
 
@@ -17,15 +17,12 @@ urlpatterns = [
 
 # ****************** View Product Urls ***************************
 
-    path('headphones', views.headphones, name = 'headphones'),
-    path('mobile', views.mobile, name = 'mobile'),
-    path('laptop', views.laptop, name = 'laptop'),
-    path('t-shirt', views.t_shirt, name = 't-shirt'),
-
-# ****************** Add Product Urls *****************************
-
-    path('AddLaptop', views.AddLaptop, name = 'AddLaptop'),
-    path('AddT_shirt', views.AddT_shirt, name = 'AddT_shirt'),
-    path('Head_phone', views.Head_phones, name = 'Head_phone'),
-    path('Mobile_phones', views.Mobile_phone, name = 'Mobile_phones'),
+    path('Products/<str:name>/', views.product_list, name = 'Products'),
+    path('Details/<int:id>', views.Details, name = 'Details'),
+    
+# ****************** Profile Urls *****************************
+    
+    path('profile_update/<int:id>', views.update_profile, name='profile_update'),
+    path('profile/<int:id>/' ,views.user_profile, name = 'profile'),
+    
 ]

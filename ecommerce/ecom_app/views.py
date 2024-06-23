@@ -1,21 +1,24 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
 from django.contrib.auth import login as signin_acc, logout, authenticate, get_user_model
 from django.contrib import messages
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return render (request, 'index.html')
+    category = Category.objects.all()
+    return render (request, 'index.html',{'category':category})
 
-def profile(request):
-    return render (request, 'profile.html')
+
+def payment(request):
+    return render (request, 'payment.html')
 
 def cart(request):
     return render (request, 'cart.html')
 
-# **************** Create Login and Logout Section ***********************
+# **************** Create account, Login and Logout Section ***********************
 
 def login(request):
     if request.method == "POST":
@@ -88,73 +91,64 @@ def Reset(request):
 
 # ********************* View Product Section **********************
 
-def headphones(request):
-    ear = Head_phone.objects.all()
-    return render (request, 'headphone.html',{'ear': ear})
+def product_list(request, name):
+    
+    prod = Products.objects.filter(category__name = name)
+    
+    for x in prod:
+        x.final_price = x.Price - (x.Price * x.discount / 100)
+    
+    return render(request, 'mobile.html',{'prod':prod})
 
-def mobile(request):
-    mob = Mobile.objects.all()
-    return render (request, 'mobile.html',{'mob':mob})
+def Details(request, id):
+    details = Products.objects.get(id = id)
+    final_price = details.Price - (details.Price * details.discount / 100)
+    return render(request, 'details.html',{'details':details,'final_price':final_price})
 
-def laptop(request):
-    product = Laptop.objects.all()
-    return render (request, 'laptop.html',{'product':product})
+@login_required(login_url='login')
+def user_profile(request, id):
+    current_user_id = request.user.id
+    
+    if current_user_id != int(id):
+        return render(request, 'access.html')
+    
+    user_profile = get_object_or_404(UserProfile, pro_id=id)
+    user = user_profile.pro
+    
+    context = {
+        'user_datas': user_profile,
+        'user1': user
+    }
+    
+    return render(request, 'profile.html', context)
 
-def t_shirt(request):
-    shirt = T_shirt.objects.all()
-    return render (request, 't-shirt.html',{'shirt': shirt})
+# ---------- update user profile ------------------------
 
-# ****************** Add Products section *******************
-
-def AddLaptop(request):
+@login_required(login_url='login')
+def update_profile(request, id):
     
-    if request.method == 'POST':
-        laptop = LaptopForm(request.POST, request.FILES)
+    currentUser = request.user.id
+    if currentUser != id:
+        return render(request, 'access.html')
     
-        if laptop.is_valid():
-            laptop.save()
+    update = UserProfile.objects.get(pro_id = id)
     
-        return redirect ('laptop')
+    if request.method =="POST":
+        update.profile = request.FILES['profile']
+        update.gender = request.POST['gender']
+        update.mobile = request.POST['mobile']
+        update.pro.username = request.POST['username']
+        update.pro.first_name = request.POST['first_name']
+        update.pro.last_name = request.POST['last_name']
+        update.pro.email = request.POST['email']
+        update.pro.save()
+        update.save()
+        
+        messages.success(request, 'Profile Updated Successfully')
+        return redirect(reverse('profile', kwargs={'id': id}))
     
-    return render (request, 'add_product.html')
-
-
-
-def AddT_shirt(request):
-    
-    if request.method == 'POST':
-        t_shirt = t_shirtForm(request.POST, request.FILES)
-    
-        if t_shirt.is_valid():
-            t_shirt.save()
-    
-        return redirect ('t-shirt')
-    
-    return render (request, 'addTshirt.html')
-
-
-def Head_phones(request):
-    
-    if request.method == 'POST':
-        headphone = HeadPhoneForm(request.POST, request.FILES)
-    
-        if headphone.is_valid():
-            headphone.save()
-    
-        return redirect ('headphones')
-    
-    return render (request, 'addHeadPhone.html')
+    return render(request, 'update_profile.html',{'update':update})
 
 
-def Mobile_phone(request):
-    
-    if request.method == 'POST':
-        Mob = MobileForm(request.POST, request.FILES)
-    
-        if Mob.is_valid():
-            Mob.save()
-    
-        return redirect ('mobile')
-    
-    return render (request, 'addMobile.html')
-    
+def custom_page_not_found(request, exception):
+    return render(request, 'error.html', status=404)

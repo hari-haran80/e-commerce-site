@@ -32,6 +32,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-top: 10vh;
     padding: 10px;
     height: 100%;
     width: 100%;
@@ -53,40 +54,11 @@
 }
 .detail_product{
     margin-top: 5px;
-    display: flex;
     width: 100%;
-    justify-content: space-around;
 }
 .product_div{
     padding: 5px;
 }
-.product_name h3{
-    margin-top: 10px;
-}
-.input_div{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-.quantity{
-    width: 50px;
-    padding: 5px;
-}
-.add_cart{
-    border: 1px solid gray;
-    padding: 5px 10px;
-    color: white;
-    font-weight: 600;
-    background-color: rgb(101, 101, 241);
-}
-.add_cart:hover{
-    background-color: blue;
-}
-.add_link{
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    padding: 5px 20px;
+.product_name h4{
+    text-decoration:line-through;
 }

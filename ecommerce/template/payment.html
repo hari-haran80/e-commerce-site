@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/payment.css">
+    <title>make payment</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="main">
+        <div class="sub_main">
+            <div class="container1">
+                <div class="sub_container">
+                    <h2>1. Delivery address</h2>
+                </div>
+                <div class="sub_container">
+                    <ul>
+                        <li>hari</li>
+                        <li>Famous soda company</li>
+                        <li>elumalai</li>
+                        <li>madurai, Tamil Nadu 625535</li>
+                        <li><a href="">Add Delivery instruction</a></li>
+                    </ul>
+                </div>
+                <div class="sub_btn">
+                    <a href="">Change</a>
+                </div>
+            </div><br><hr><br>
+            <div class="container1">
+                <div class="sub_container">
+                    <h2>2. Payment method</h2>
+                </div>
+                <div class="sub_container">
+                    <h3>Pay on delivery (cash/card)</h3>
+                    <div class="sub1">
+                        <h3>Add a gift card or promotion code</h3>
+                        <input type="number" placeholder="Enter code">
+                        <button>Apply</button>
+                    </div>
+                </div>
+                <div class="sub_btn">
+                    <a href="">Change</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="code">
+                    <h3>Your available balance</h3><hr>
+                    <div class="code_sub">
+                        <i class="fa-solid fa-plus"></i> <input type="number" placeholder="Enter Code">
+                        <button><a href="">Apply</a></button>
+                    </div>
+                    <div class="pay2">
+                        <h3>Another Payment method</h3><hr><br>
+                        <input type="radio" name="payment">
+                        <label for="">Credit or debit card</label><br>
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-solid fa-credit-card"></i>
+                            <i class="fa-brands fa-cc-amazon-pay"></i>
+                            <i class="fa-brands fa-cc-diners-club"></i><br> <br>
+                        <input type="radio" name="payment">
+                        <label for="">Net Banking</label><br> 
+                            <select name="" id="">
+                                <option value="">Choose an option</option>
+                                <option value="">Axis bank</option>
+                                <option value="">HDFC Bank</option>
+                                <option value="">SBI Bank</option>
+                                <option value="">BOI bank</option>
+                                <option value="">Kotak Bank</option>
+                            </select><br><br>
+                        <input type="radio" name="payment">
+                        <label for="">Other UPI Apps</label><br> <br>
+                        <input type="radio" name="payment">
+                        <label for="">EMI</label><br><br>
+                        <input type="radio" name="payment" checked>
+                        <label for="">Cash on Delivery/Pay on Delivery</label>
+                        <p>Cash, UPI and Cards accepter. <span>Know more.</span></p><br>
+                    </div><hr>
+                    <div class="use">
+                        <button><a href="">Use this Payment Method</a></button>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container2">
+                <h2>3. Review items and delivery</h2>
+            </div>
+            <div class="sub2">
+                <div class="empty"></div>
+                <div class="content">
+                    <h3><i class="fa-solid fa-triangle-exclamation" style="color: orange;"></i> One-time password required at time of delivery</h3>
+                    <p>Please ensure someone will be available to recieve this delivery. <a href="">Learn more.</a></p>
+                </div>    
+            </div><br>
+            <div class="place">
+                <div class="button">
+                    <button><a href="">Place your order</a></button>
+                </div>
+                <div class="detail">
+                    <h3>Order Total : ₹9,499.00</h3>
+                    <p>By placing your order, you agree to Amazon's <span>Privacy notice</span> and <span>Conditions of use</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="side">
+            <div class="one">
+                <button><a href="">Place Your Order</a></button>
+                <p>By placing your order, you agree to Amazon's <span>Privacy notice</span> and <span>Conditions of use</span></p>
+            </div><hr>
+            <div class="two">
+                <h3>Order Summary</h3>
+                <div class="list">
+                    <table>
+                        <tr>
+                            <td>Sub Total(1item):</td>
+                            <td>₹9,499.00</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery</td>
+                            <td>₹40.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td>₹9,539.00</td>
+                        </tr>
+                        <tr>
+                            <td>Promotion Applied:</td>
+                            <td>₹40.00</td>
+                        </tr>
+                    </table><hr>
+                    <table class="table1">
+                        <tr>
+                            <td>Order Total:</td>
+                            <td>₹9,499.00</td>
+                        </tr>
+                    </table><hr>
+                </div>
+            </div>
+            <div class="three">
+                <h2>Your Savings: ₹ 5,540.00(37%)</h2>
+                <ul>
+                    <li>FREE Delivery</li>
+                    <li>Item Discount</li>
+                </ul>
+                <a href="">Details</a>
+            </div><br><hr><br>
+            <div class="four">
+                <p><a href="">How are delivery costs calculated?</a></p>
+                <p><a href="">Why didn't I qualify for FREE Delivery?</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer_sub">
+        <p>&copy; For Educational purpose only</p>
+    </div>
+</body>
+</html>

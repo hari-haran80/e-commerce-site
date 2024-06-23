@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/Details.css">
+    <title>Product Details</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+    {% load humanize %}
+    <div class="Product-container">
+        <div class="product-card">
+            <h2 class="product-h2">Product Details</h2><hr>
+            <div class="product-details">
+                <div class="product-image">
+                    <img src="{{details.Images.url}}" alt="" class="img-product">
+                    <h4 class="discount-h5">{{details.discount}}%</h4>
+                </div>
+                <div class="details-section">
+                    <h3>{{details.Name}}</h3>
+                    <p>{{details.description}}</p>
+                    <h5 style="color: red;">Original Price Rs: <span class="price-Original">{{details.Price |intcomma }}</span></h5>
+                    <h5 style="color: blue;">Current Price Rs: <span class="price-Current">{{final_price |intcomma}}</span></h5>
+                    <button class="Btn-cart" type="submit">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
