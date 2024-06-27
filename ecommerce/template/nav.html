@@ -26,8 +26,12 @@
                     {% else %} 
                         <li><a href="/login" class="nav_link"><i class="fa-solid fa-right-to-bracket"></i> login</a></li>
                     {% endif %}
-                    <li><a href="/cart" class="nav_link"><i class="fa-solid fa-cart-shopping"></i> cart </a></li>
-                    <li title="profile"><a href="/profile/{{user.id}}" class="nav_link"><img src="{{ image_url }}"  class="IfImg" alt=""></a></li>
+                        <li><a href="/cart" class="nav_link"><i class="fa-solid fa-cart-shopping"></i> cart </a></li>
+                    {% if user.is_authenticated %}
+                        <li title="profile"><a href="/profile/{{user.id}}" class="nav_link"><img src="{{ image_url }}"  class="IfImg" alt=""></a></li>
+                    {% else %}
+                        <li title="profile"><a href="login" class="nav_link"><i class="fa-solid fa-user"></i></a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

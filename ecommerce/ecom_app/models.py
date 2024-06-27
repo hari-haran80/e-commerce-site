@@ -19,6 +19,7 @@ class Products(models.Model):
     Name = models.CharField(max_length = 50)
     Model = models.CharField(max_length = 50)
     Price = models.PositiveIntegerField()
+    quantity = models.IntegerField(null = True, default=0, blank=True)
     discount = models.PositiveIntegerField(default=0, null=True, blank=True)
     description = models.TextField(max_length=1000, blank=True, default=None, null = True)
     Images = models.ImageField(null = True, blank= True, upload_to= 'images')
@@ -51,3 +52,12 @@ class UserProfile(models.Model):
             UserProfile.objects.create(pro=instance)
         else:
             instance.userprofile.save()
+
+class Cart(models.Model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, blank=False)
+    
+    def __str__(self):
+        return str(self.product.Name)

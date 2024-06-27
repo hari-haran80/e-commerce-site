@@ -21,8 +21,14 @@
                     <h3>{{details.Name}}</h3>
                     <p>{{details.description}}</p>
                     <h5 style="color: red;">Original Price Rs: <span class="price-Original">{{details.Price |intcomma }}</span></h5>
-                    <h5 style="color: blue;">Current Price Rs: <span class="price-Current">{{final_price |intcomma}}</span></h5>
-                    <button class="Btn-cart" type="submit">Add to Cart</button>
+                    <h5 style="color: blue;">Current Price Rs: <span class="price-Current">{{final_price | floatformat:"2"| intcomma}}</span></h5>
+                    <input type="hidden" value="{{details.id}}" id="pid">
+                    <div class="Add-to-cart">
+                        <button id="Minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="text" value="1" id="Quantity">
+                        <button id="Plus"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <button class="Btn-cart" id="Btn-cart" type="submit"><i class="fa-solid fa-cart-shopping"></i>  Add to Cart</button>
                 </div>
             </div>
         </div>

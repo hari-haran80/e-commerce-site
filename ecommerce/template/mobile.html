@@ -55,7 +55,7 @@
                         </div>
                         <div class="product_name">
                             <h4>Rs: {{x.Price|intcomma}}</h4>
-                            <h3>Rs: {{ x.final_price |intcomma }}</h3>
+                            <h3>Rs: {{ x.final_price | floatformat:"2"| intcomma }}</h3>
                         </div>
                     </div>
                 </a>
