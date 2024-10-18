@@ -5,8 +5,13 @@ urlpatterns = [
 
     path('' ,views.home, name = 'home'),
     path('home' ,views.home, name = 'home'),
+    path('payment', views.payment, name = 'payment'),   
+
+# ****************** Add to cart, Delete Items from Cart ***************
+    
     path('cart', views.cart, name = 'cart'),
-    path('payment', views.payment, name = 'payment'),
+    path('AddToCart', views.AddToCart, name = 'AddToCart'),
+    path('Delete_item/<int:cid>', views.Delete_item, name = 'Delete_item'),
 
 # ****************** Login, Logout and Create User ***************
 

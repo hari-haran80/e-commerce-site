@@ -11,13 +11,18 @@
         input{
             color: black;
         }
+        .sub_button:disabled{
+            background-color: grey;
+            color: white;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
     {% include 'nav.html' %}
     <div class="main">
         <div class="main_container">
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="CreateSubmit()">
                 {% csrf_token %}
                 <div class="create">
                 {% if messages %}
@@ -30,20 +35,20 @@
                     <h2>Create Account</h2>
                     <div class="name">
                         <label for="">Your Name:</label><br>
-                        <input type="text" placeholder="First and Last name" name="username">
+                        <input type="text" required placeholder="First and Last name" name="username">
                     </div>
                     <div class="email">
                         <label for="">Email:</label><br>
-                        <input type="email" name="email">
+                        <input type="email" required name="email" placeholder="Enter Email Address">
                     </div>
                     <div class="password">
                         <label for="">Password:</label><br>
-                        <input type="password" placeholder="At least 6 characters" name="password1">
+                        <input type="password" required placeholder="At least 6 characters" name="password1">
                         <p><i class="fa-solid fa-circle-info" style="color: blue;"></i> Password must be at least 6 characters</p>
                     </div>
                     <div class="re">
                         <label for="">Re-enter Password:</label><br>
-                        <input type="password" name="password2">
+                        <input type="password" required name="password2">
                     </div>
                     <div class="btn">
                         <input type="submit" class="sub_button" value="create account">
@@ -66,5 +71,12 @@
         <p>&copy; For Educational purpose only</p>
     </div>
     <script src="../static/JavaScript/signin.js"></script>
+    <script>
+        function CreateSubmit(){
+            var CreateBtn = document.querySelector('.sub_button');
+            CreateBtn.value = 'Creating Account';
+            CreateBtn.disabled = true;
+        }
+    </script>
 </body>
 </html>

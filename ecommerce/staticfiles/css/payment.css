@@ -1,0 +1,278 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.6rem;
+}
+.main{
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    justify-content: space-evenly;
+}
+.sub_main{
+    width: 50%;
+}
+.container1{
+    display: flex;
+    justify-content: space-between;
+}
+.sub_container ul{
+    list-style: none;
+}
+.container1 a{
+    text-decoration: none;
+    color: blue;
+}
+.sub1 input{
+    width: 69%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.sub1 button{
+    background-color: whitesmoke;
+    margin-left: 10px;
+    width: 25%;
+    padding: 5px;
+    border-radius: 5px;
+}
+.card{
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+.code_sub{
+    padding: 10px;
+}
+.code_sub i{
+    color: gray;
+}
+.code_sub input{
+    width: 40%;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+.code_sub button{
+    padding: 3px;
+    border-radius: 5px;
+}
+.code_sub button a{
+    text-decoration: none;
+    color: black;
+    padding: 5px 30px;
+}
+.pay2{
+    padding: 5px;
+    margin-left: 5px;
+}
+.pay2 i{
+    margin-left: 10px;
+    font-size: 20px;
+}
+.pay2 select{
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+.pay2 p span{
+    color: blue;
+}
+.use{
+    height: 50px;
+    background-color: antiquewhite;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+.use button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid orange;
+    background-color: orange;
+}
+.use button a{
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+.container2{
+    width: 100%;
+}
+.sub2{
+    display: flex;
+    width: 97%;
+    margin-left: 3%;
+    border-radius: 5px;
+    border-left: 5px solid orange;
+    border: 2px solid orange;
+}
+.empty{
+    padding: 40px 5px;
+    width: 1%;
+    height: auto;
+    background-color: orange;
+}
+.content{
+    padding: 15px;
+}
+.content p a{
+    text-decoration: none;
+    color: blue;
+}
+.place{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(147, 147, 147);
+    border-radius: 5px;
+}
+.button{
+    width: 23%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button button{
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    background-color: orange;
+}
+.button button a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.detail{
+    width: 75%;
+}
+.detail h3{
+    color: brown;
+}
+.detail p span{
+    color: blue;
+}
+.side{
+    width: 25%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+.one{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.one button{
+    width: 100%;
+    padding: 5px;
+    background-color: orange;
+    border-radius: 5px;
+}
+.one button a{
+    color: black;
+    text-decoration: none;
+}
+.one p span{
+    color: blue;
+}
+.two{
+    margin-top: 10px;
+}
+.list table{
+    width: 100%;
+}
+.list table tr{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.table1 tr td{
+    font-size: 20px;
+    font-weight: 600;
+    color: red;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+}
+.three{
+    margin-top: 10px;
+}
+.three h2{
+    color: red;
+}
+.three ul{
+    list-style-position: inside;
+}
+.three a{
+    color: blue;
+    text-decoration: none;
+}
+.four p a{
+    color: blue;
+    text-decoration: none;
+}
+.footer_sub{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+@media screen and (max-width:1120px){
+    .button button a{
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width:1120px){
+    .main{
+        padding: 20px;
+        display: block;
+    }
+    .sub_main{
+        width: 100%;
+    }
+    .side{
+        width: 100%;
+    }
+    .place{
+        padding: 20px;
+    }
+}
+@media screen and (max-width:609px){
+    .container1{
+        display: block;
+    }
+    .sub_container h3{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .place{
+        display: block;
+    }
+    .button{
+        width: 100%;
+    }
+    .button button{
+        padding: 7px;
+    }
+    .detail{
+        width: 100%;
+    }
+    .use{
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width:397px){
+    .container2 h2{
+        font-size: 20px;
+    }
+    .three h2{
+        font-size: 18px;
+    }
+}

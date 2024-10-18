@@ -8,14 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Login</title>
     <style>
-        
+        .sub_button:disabled{
+            background-color: grey;
+            color: white;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
     {% include 'nav.html' %}
     <div class="main">
         <div class="main_container">
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="SignInSubmision()">
                 {% csrf_token %}
                 {% if messages %}
                     {% for x in messages %}
@@ -59,6 +63,13 @@
             <p>&copy; For Educational purpose only</p>
         </div>
     </footer>
-    <script src="../static/JavaScript/signin.js"></script>
 </body>
+<script src="../static/JavaScript/signin.js"></script>
+<script>
+    function SignInSubmision(){
+        var SignInBtn = document.querySelector('.sub_button')
+        SignInBtn.value = "Signing In...!"
+        SignInBtn.disabled = true;
+    }
+</script>
 </html>

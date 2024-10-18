@@ -10,37 +10,12 @@
     <title>{{x.category.name}}</title>
     {% endfor %}
     <style>
-        .detail_product{
-            color: darkcyan;
-            padding: 5px 15px;
-        }
-        .product_name h4{
-            color: red;
-            padding: 5px;
-            text-decoration:line-through;
-        }
-        .product_name{
-            padding: 5px 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .product_name h3{
-            font-weight: 300;
-            font-size: 16px;
-            color: whitesmoke;
-            padding: 5px;
-            border-radius: 10px;
-            background-color: green;
-        }
-        .Product_link{
-            text-decoration: none;
-        }
+        
     </style>
 </head>
 <body>
     {% load humanize %}
     {% include 'nav.html' %}
-    <form action=""  method="post">
         <div class="main_container_t-shirt">
             <div class="sub_t-shirt_container">
                 {% for x in prod %}
@@ -55,13 +30,13 @@
                         </div>
                         <div class="product_name">
                             <h4>Rs: {{x.Price|intcomma}}</h4>
-                            <h3>Rs: {{ x.final_price | floatformat:"2"| intcomma }}</h3>
+                            <h3>Rs: {{ x.offer_price | floatformat:"2"| intcomma }}</h3>
                         </div>
                     </div>
                 </a>
                 {% endfor %}
             </div>
         </div>
-    </form>
+        {% include 'Footer.html' %}
 </body>
 </html>

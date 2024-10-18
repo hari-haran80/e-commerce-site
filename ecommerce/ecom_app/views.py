@@ -6,6 +6,9 @@ from django.contrib.auth import login as signin_acc, logout, authenticate, get_u
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+import json
+
 
 def home(request):
     category = Category.objects.all()
@@ -15,8 +18,46 @@ def home(request):
 def payment(request):
     return render (request, 'payment.html')
 
+# ---------------------- Cart Section ------------------------
+
 def cart(request):
-    return render (request, 'cart.html')
+    
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user = request.user)
+        return render (request, 'cart.html', {'cart':cart})
+    
+    else:
+        return redirect("login")
+    
+
+def AddToCart(request):
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
+        if request.user.is_authenticated:
+            data = json.load(request)
+            product_qty = data['product_qty']
+            product_id = data['pid']
+            product_status = Products.objects.get(id = product_id)
+            
+            if product_status:
+                if Cart.objects.filter(user = request.user , product_id = product_id):
+                    return JsonResponse({'status':"Product already added to cart"}, status = 200)
+                else:
+                    if product_status.quantity >= product_qty:
+                        Cart.objects.create(user = request.user , product_id = product_id, quantity = product_qty)
+                        return JsonResponse({'status':"Product added to cart"}, status = 200)
+                    else:
+                        return JsonResponse({'status':"No stack available"}, status = 200)
+        else:
+            return JsonResponse({'status':"Login to Continue"}, status = 200)
+    else:
+        return JsonResponse({'status':"invalid Access"}, status = 200)
+
+
+def Delete_item (request, cid):
+    cart_items = Cart.objects.get(id = cid)
+    cart_items.delete()
+    return redirect("cart")
+
 
 # **************** Create account, Login and Logout Section ***********************
 
@@ -34,6 +75,7 @@ def login(request):
             messages.error(request, 'enter correct username and password')
         
     return render (request, 'login_amazon.html')
+
 
 def create_account(request):
     if request.method == "POST":
@@ -61,6 +103,7 @@ def create_account(request):
             
             
     return render (request, 'create.html')
+
 
 
 def logout_user(request):
@@ -94,16 +137,13 @@ def Reset(request):
 def product_list(request, name):
     
     prod = Products.objects.filter(category__name = name)
-    
-    for x in prod:
-        x.final_price = x.Price - (x.Price * x.discount / 100)
-    
     return render(request, 'mobile.html',{'prod':prod})
 
 def Details(request, id):
     details = Products.objects.get(id = id)
-    final_price = details.Price - (details.Price * details.discount / 100)
-    return render(request, 'details.html',{'details':details,'final_price':final_price})
+    return render(request, 'details.html',{'details':details})
+
+# -----------------  User Profile  ------------------------
 
 @login_required(login_url='login')
 def user_profile(request, id):
@@ -122,7 +162,6 @@ def user_profile(request, id):
     
     return render(request, 'profile.html', context)
 
-# ---------- update user profile ------------------------
 
 @login_required(login_url='login')
 def update_profile(request, id):
@@ -148,6 +187,7 @@ def update_profile(request, id):
         return redirect(reverse('profile', kwargs={'id': id}))
     
     return render(request, 'update_profile.html',{'update':update})
+
 
 
 def custom_page_not_found(request, exception):

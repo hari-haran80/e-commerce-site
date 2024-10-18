@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Footer</title>
 </head>
 <body>
     <div class="Footer-container">
-        
+        <div class="Footer-Sub">
+            <div class="Footer-Sub-1">
+                <h2>Links</h2>
+                <ul class="Links-ul">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="Footer-Sub-2">
+                <h2>Let's Stay Connected</h2>
+                <p>Enter Your Email for get the Latest Updates</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="Connect-div">
+                        <input type="text" placeholder="Enter Your Email" name="email" class="Connect-input">
+                        <button type="submit" class="Connect-button">Subscribe</button>
+                    </div>
+                </form>
+                <h3>Follow Us</h3>
+                <div class="Social-icons">
+                    <span><a href="https://www.instagram.com/heart_stoler_hari/"><i class="fa-brands fa-instagram"></i></a></span>
+                    <span><a href="https://www.facebook.com/profile.php?id=100009078732441"><i class="fa-brands fa-facebook"></i></a></span>
+                    <span><a href="https://www.linkedin.com/in/hari-haran-8281351a8/"><i class="fa-brands fa-linkedin"></i></a></span>
+                    <span><a href="https://github.com/dashboard"><i class="fa-brands fa-github"></i></a></span>
+                </div>
+            </div>
+            <div class="Footer-sub-3">
+                <h2>Products</h2>
+                <ul class="Links-ul">
+                    <li class="Product-list"><a href="/Products/Laptop/">Laptop</a></li>
+                    <li class="Product-list"><a href="/Products/Mobiles/">Mobile</a></li>
+                    <li class="Product-list"><a href="/Products/T-Shirt/">T-shirt</a></li>
+                    <li class="Product-list"><a href="/Products/Head%20Phones/">Head Phones</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="Footer-content">
+            <ul class="TermsUl">
+                <li><a href="">Terms of Service</a></li>|
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+            <p class="CopyRight">© Time to Programe | Happy Coding</p>
+        </div>
     </div>
 </body>
 </html>

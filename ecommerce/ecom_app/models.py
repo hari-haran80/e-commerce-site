@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=100)
-    Images = models.ImageField(null = True, blank= True, upload_to= 'images')
+    Images = models.ImageField(null = True, blank= True, upload_to= 'static/Products')
     
     def __str__(self):
         return self.name.upper()
@@ -22,7 +22,7 @@ class Products(models.Model):
     quantity = models.IntegerField(null = True, default=0, blank=True)
     discount = models.PositiveIntegerField(default=0, null=True, blank=True)
     description = models.TextField(max_length=1000, blank=True, default=None, null = True)
-    Images = models.ImageField(null = True, blank= True, upload_to= 'images')
+    Images = models.ImageField(null = True, blank= True, upload_to= 'static/Products')
 
     def __str__(self):
         return self.Name.upper()
@@ -61,3 +61,7 @@ class Cart(models.Model):
     
     def __str__(self):
         return str(self.product.Name)
+    
+    @property
+    def total_cost(self):
+        return self.product.offer_price * self.quantity
